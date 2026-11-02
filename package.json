@@ -2,7 +2,9 @@
   "name": "readywhen-ai-challenge",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "db": "docker compose up -d postgres",
     "dev:web": "next dev -p 3000",
@@ -11,12 +13,14 @@
     "build:agent": "mastra build --dir src/mastra",
     "start:web": "next start -p 3000",
     "start:agent": "node .mastra/output/index.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "eval": "EVAL=1 node --env-file=.env --import tsx src/mastra/evals/run.ts"
   },
   "dependencies": {
     "@mastra/core": "1.79.0",
     "@mastra/loggers": "1.3.9",
     "@mastra/memory": "1.39.0",
+    "@mastra/observability": "1.22.0",
     "@mastra/pg": "1.32.0",
     "next": "16.4.2",
     "postgres": "3.4.9",
@@ -28,6 +32,7 @@
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "mastra": "1.35.0",
+    "tsx": "4.20.6",
     "typescript": "5.9.3"
   }
 }
