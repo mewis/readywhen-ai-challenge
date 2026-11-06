@@ -49,13 +49,14 @@ export function sentences(text: string): string[] {
 export type Email = { tool: string; body: string; to: string[] }
 
 // Bodies written as Elena. A send_draft reuses the draft already counted.
+// A reply often omits `to`, and the sent message carries the address. The sign-off depends on that address.
 export function emails(calls: ToolCall[]): Email[] {
   const drafts = calls.filter(call => call.name === 'save_draft')
   const written: Email[] = []
   for (const call of calls) {
     if (call.name === 'save_draft' || call.name === 'send_mail') {
       const body = stringField(call.args, 'body')
-      if (body) written.push({ tool: call.name, body, to: addresses(call.args) })
+      if (body) written.push({ tool: call.name, body, to: deliveredTo(call) })
       continue
     }
     if (call.name !== 'send_draft') continue
@@ -84,6 +85,11 @@ function partsOf(message: MastraDBMessage): { type?: string; text?: string }[] {
     return (content as { parts: { type?: string; text?: string }[] }).parts
   }
   return []
+}
+
+function deliveredTo(call: ToolCall): string[] {
+  const sent = addresses(call.result)
+  return sent.length > 0 ? sent : addresses(call.args)
 }
 
 function addresses(value: unknown): string[] {

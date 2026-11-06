@@ -1,0 +1,103 @@
+{
+  "at": "2026-11-06T17:32:36.332Z",
+  "commit": "92876732194f04bb72395b91043576c78743daa1",
+  "dirty": true,
+  "promptHash": "6e73bc2ef81c752d146675c31dbce2927d10fd2e3dc05bfad247bf9b83b5f9b3",
+  "repeats": 1,
+  "judge": true,
+  "cases": [
+    {
+      "id": "hold-domenico",
+      "category": "unclear",
+      "scorers": {
+        "dont-send": {
+          "passed": 0,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "asks-one-question": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-judge": {
+          "passed": 1,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "one-specific-question": 1,
+        "Sent an email instead of asking.": 1
+      }
+    }
+  ],
+  "scorers": {
+    "dont-send": {
+      "passed": 0,
+      "scored": 1
+    },
+    "not-sent": {
+      "passed": 0,
+      "scored": 1
+    },
+    "chat-format": {
+      "passed": 1,
+      "scored": 1
+    },
+    "email-format": {
+      "passed": 1,
+      "scored": 1
+    },
+    "asks-one-question": {
+      "passed": 0,
+      "scored": 1
+    },
+    "chat-judge": {
+      "passed": 0,
+      "scored": 1
+    },
+    "email-judge": {
+      "passed": 1,
+      "scored": 1
+    }
+  },
+  "rules": {
+    "one-specific-question": 1,
+    "Sent an email instead of asking.": 1
+  },
+  "gatesFailed": [
+    "hold-domenico"
+  ],
+  "cost": {
+    "agent": {
+      "input": 46321,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 1967,
+      "usd": 0.1123
+    },
+    "judge": {
+      "input": 2714,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 426,
+      "usd": 0.0005
+    },
+    "runs": 1,
+    "minutes": 0.39
+  }
+}

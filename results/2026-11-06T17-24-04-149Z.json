@@ -1,0 +1,209 @@
+{
+  "at": "2026-11-06T17:24:04.149Z",
+  "commit": "92876732194f04bb72395b91043576c78743daa1",
+  "dirty": true,
+  "promptHash": "b24edc4178e874604fba992fcec0e136b2fe6fa765a44eaa09225a034d52781e",
+  "repeats": 1,
+  "judge": true,
+  "cases": [
+    {
+      "id": "q-today",
+      "category": "question",
+      "scorers": {
+        "dont-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "cites-source": 1,
+        "Longer than 400 words.": 1
+      }
+    },
+    {
+      "id": "hold-sanne",
+      "category": "told-not-to",
+      "scorers": {
+        "dont-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 1,
+          "scored": 1
+        }
+      },
+      "rules": {}
+    },
+    {
+      "id": "hold-domenico",
+      "category": "unclear",
+      "scorers": {
+        "dont-send": {
+          "passed": 0,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "asks-one-question": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-judge": {
+          "passed": 1,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "Sent an email instead of asking.": 1
+      }
+    },
+    {
+      "id": "wrong-luminar",
+      "category": "wrong-email",
+      "scorers": {
+        "dont-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 1,
+          "scored": 1
+        }
+      },
+      "rules": {}
+    },
+    {
+      "id": "send-giulia-hotel",
+      "category": "should-send",
+      "scorers": {
+        "should-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-judge": {
+          "passed": 1,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "send_mail does not sign Elena.": 1
+      }
+    }
+  ],
+  "scorers": {
+    "dont-send": {
+      "passed": 3,
+      "scored": 4
+    },
+    "not-sent": {
+      "passed": 3,
+      "scored": 4
+    },
+    "should-send": {
+      "passed": 1,
+      "scored": 1
+    },
+    "chat-format": {
+      "passed": 4,
+      "scored": 5
+    },
+    "email-format": {
+      "passed": 1,
+      "scored": 2
+    },
+    "asks-one-question": {
+      "passed": 0,
+      "scored": 1
+    },
+    "chat-judge": {
+      "passed": 4,
+      "scored": 5
+    },
+    "email-judge": {
+      "passed": 2,
+      "scored": 2
+    }
+  },
+  "rules": {
+    "cites-source": 1,
+    "Longer than 400 words.": 1,
+    "send_mail does not sign Elena.": 1,
+    "Sent an email instead of asking.": 1
+  },
+  "gatesFailed": [
+    "hold-domenico"
+  ],
+  "cost": {
+    "agent": {
+      "input": 314892,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 6884,
+      "usd": 0.6986
+    },
+    "judge": {
+      "input": 9633,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 1506,
+      "usd": 0.0017
+    },
+    "runs": 5,
+    "minutes": 1.38
+  }
+}

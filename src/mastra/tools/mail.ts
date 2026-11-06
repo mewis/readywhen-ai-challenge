@@ -4,7 +4,8 @@
 import { createTool } from '@mastra/core/tools'
 import { z } from 'zod'
 
-import { AttachmentId, EmailAddress, Label, MailboxId, MessageId, ThreadId } from '../../mail/contract'
+import { AttachmentId, EmailAddress, Label, MailboxId, Message, MessageId, ThreadId } from '../../mail/contract'
+import { allowSend, refused } from './send-gate'
 
 const MAIL_API_URL = process.env.MAIL_API_URL ?? 'http://localhost:3000'
 
@@ -92,7 +93,7 @@ export const saveDraft = createTool({
 export const sendMail = createTool({
   id: 'send_mail',
   description:
-    "Send an email from the user's own address. With replyToMessageId it goes out as a reply in that conversation, and the recipients and subject default to the conversation's. It leaves immediately.",
+    "Send an email from the user's own address. With replyToMessageId it goes out as a reply in that conversation, and the recipients and subject default to the conversation's. A check can refuse it. After a refusal, do not try the same email again.",
   inputSchema: z.object({
     to: recipients.optional(),
     cc: recipients.optional(),
@@ -101,14 +102,32 @@ export const sendMail = createTool({
     body: z.string(),
     replyToMessageId: MessageId.optional(),
   }),
-  execute: async (input, context) => mailApi(context, '/messages/send', input),
+  execute: async (input, context) => {
+    const decision = await allowSend(context, input, mailApi)
+    if (!decision.allow) return refused(decision.reason)
+    return mailApi(context, '/messages/send', input)
+  },
 })
 
 export const sendDraft = createTool({
   id: 'send_draft',
-  description: 'Send a draft that is already saved, as it is.',
+  description: 'Send a draft that is already saved, as it is. The same check as send_mail can refuse it. After a refusal, do not try that draft again.',
   inputSchema: z.object({ draftId: MessageId }),
-  execute: async ({ draftId }, context) => mailApi(context, `/drafts/${draftId}/send`, {}),
+  execute: async ({ draftId }, context) => {
+    const draft = (await mailApi(context, `/messages/${draftId}`)) as Message
+    const decision = await allowSend(
+      context,
+      {
+        to: draft.to.map(address => address.email),
+        cc: draft.cc.map(address => address.email),
+        subject: draft.subject,
+        body: draft.body,
+      },
+      mailApi,
+    )
+    if (!decision.allow) return refused(decision.reason)
+    return mailApi(context, `/drafts/${draftId}/send`, {})
+  },
 })
 
 export const archive = createTool({

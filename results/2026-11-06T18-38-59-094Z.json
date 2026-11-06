@@ -1,0 +1,85 @@
+{
+  "at": "2026-11-06T18:38:59.094Z",
+  "commit": "92876732194f04bb72395b91043576c78743daa1",
+  "dirty": true,
+  "promptHash": "87ea3afdb8f9b094cc54db98ccbb32f22c037e5f824da71f1968e1b136e7e2dc",
+  "repeats": 1,
+  "judge": true,
+  "cases": [
+    {
+      "id": "send-giulia-hotel",
+      "category": "should-send",
+      "scorers": {
+        "should-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-judge": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "cites-source": 1,
+        "warm-not-fussy": 1
+      }
+    }
+  ],
+  "scorers": {
+    "should-send": {
+      "passed": 1,
+      "scored": 1
+    },
+    "chat-format": {
+      "passed": 1,
+      "scored": 1
+    },
+    "email-format": {
+      "passed": 1,
+      "scored": 1
+    },
+    "chat-judge": {
+      "passed": 0,
+      "scored": 1
+    },
+    "email-judge": {
+      "passed": 0,
+      "scored": 1
+    }
+  },
+  "rules": {
+    "cites-source": 1,
+    "warm-not-fussy": 1
+  },
+  "gatesFailed": [],
+  "cost": {
+    "agent": {
+      "input": 91113,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 914,
+      "usd": 0.1914
+    },
+    "judge": {
+      "input": 2575,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 781,
+      "usd": 0.0006
+    },
+    "runs": 1,
+    "minutes": 0.34
+  }
+}

@@ -5,6 +5,7 @@ import type { MastraDBMessage } from '@mastra/core/agent'
 import { parseArgs } from './args'
 import { compare, type EvalResult } from './result'
 import { asksOneQuestion } from '../scorers/asks-one-question'
+import { latestRequest, refused } from '../tools/send-gate'
 import { chatFormat } from '../scorers/chat-format'
 import { emailFormat } from '../scorers/email-format'
 import { shouldSend } from '../scorers/should-send'
@@ -61,6 +62,51 @@ function send(messages: { to: string[]; cc?: string[]; body?: string }[], text =
 
 function toDomenico(messages: { to: string[]; cc?: string[]; body?: string }[], text = '') {
   return send(messages, text, { shouldSend: true, to: DOMENICO })
+}
+
+function user(text: string) {
+  return { role: 'user', content: text }
+}
+
+function mailed(body: string, to: string): Run {
+  return {
+    output: [{
+      id: 'm',
+      role: 'assistant',
+      createdAt: new Date(),
+      content: {
+        content: '',
+        toolInvocations: [{
+          toolCallId: 'c0',
+          toolName: 'send_mail',
+          args: { body, replyToMessageId: 'msg_0001' },
+          result: { to: [{ email: to }], body },
+          state: 'output-available',
+        }],
+      },
+    }] as unknown as MastraDBMessage[],
+  }
+}
+
+function refusedSend(): Run {
+  return {
+    output: [{
+      id: 'm',
+      role: 'assistant',
+      createdAt: new Date(),
+      content: {
+        content: '',
+        toolInvocations: [{
+          toolCallId: 'c0',
+          toolName: 'send_mail',
+          args: { to: [GIULIA], body: 'Ciao Giulia, the hotel is option A. E.' },
+          result: refused('Not sent. She did not state the choice.'),
+          state: 'output-available',
+        }],
+      },
+    }] as unknown as MastraDBMessage[],
+    groundTruth: { shouldSend: true, to: GIULIA },
+  }
 }
 
 async function main() {
@@ -150,6 +196,17 @@ async function main() {
   const twice = await shouldSend.run(toDomenico([{ to: [DOMENICO] }, { to: [DOMENICO] }]))
   check('two emails fail', twice.score === 0 && String(twice.reason).startsWith('Sent 2 emails.'), String(twice.reason))
 
+  const blocked = await shouldSend.run(refusedSend())
+  check('a refused send did not go out', blocked.score === 0 && blocked.reason === 'send_mail was called but did not send.', String(blocked.reason))
+
+  const request = latestRequest([
+    user('Reply to him'),
+    { role: 'assistant', content: 'I sent it.' },
+    user("Tell Giulia we'll go with option A"),
+  ])
+  check('the send check reads her latest message', request === "Tell Giulia we'll go with option A", request)
+  check('the send check has nothing to read when she has not spoken', latestRequest([{ role: 'assistant', content: 'I sent it.' }]) === '')
+
   const stiff = "Dear Enrico, I hope this email finds you well. I am writing to confirm that our team will arrive at the studio at 7:00 tomorrow morning."
   const badEmail = await emailFormat.run(send([{ to: [ENRICO], body: stiff }]))
   check('a stiff email fails', badEmail.score === 0 && String(badEmail.reason).includes('send_mail does not open with Ciao.') && String(badEmail.reason).includes('send_mail uses corporate phrasing.'), String(badEmail.reason))
@@ -159,6 +216,12 @@ async function main() {
 
   const team = await emailFormat.run(send([{ to: [GIULIA], body: 'Ciao Giulia, the hotel is option A. E.' }]))
   check('a note to the team signs E.', team.score === 1, String(team.reason))
+
+  const replyToGiulia = await emailFormat.run(mailed('Ciao Giulia, the hotel is option A. She can book it.\nE.', GIULIA))
+  check('a reply that omits To still signs E. for Giulia', replyToGiulia.score === 1, String(replyToGiulia.reason))
+
+  const replySignedElena = await emailFormat.run(mailed('Ciao Giulia, the hotel is option A. She can book it.\nElena', GIULIA))
+  check('Elena is still the wrong sign-off when the sent message is to Giulia', replySignedElena.score === 0 && String(replySignedElena.reason).includes('send_mail does not sign E.'), String(replySignedElena.reason))
 
   const signedFull = await emailFormat.run(send([{ to: [GIULIA], body: 'Ciao Giulia, the hotel is option A. Elena' }]))
   check('Elena is the wrong sign-off for the team', signedFull.score === 0 && String(signedFull.reason).includes('send_mail does not sign E.'), String(signedFull.reason))

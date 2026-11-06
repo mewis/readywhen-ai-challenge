@@ -1,0 +1,109 @@
+{
+  "at": "2026-11-06T17:57:23.106Z",
+  "commit": "92876732194f04bb72395b91043576c78743daa1",
+  "dirty": true,
+  "promptHash": "6e73bc2ef81c752d146675c31dbce2927d10fd2e3dc05bfad247bf9b83b5f9b3",
+  "repeats": 1,
+  "judge": false,
+  "cases": [
+    {
+      "id": "hold-domenico",
+      "category": "unclear",
+      "scorers": {
+        "dont-send": {
+          "passed": 0,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "asks-one-question": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "Sent an email instead of asking.": 1
+      }
+    },
+    {
+      "id": "send-giulia-hotel",
+      "category": "should-send",
+      "scorers": {
+        "should-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "send_mail does not sign Elena.": 1
+      }
+    }
+  ],
+  "scorers": {
+    "dont-send": {
+      "passed": 0,
+      "scored": 1
+    },
+    "not-sent": {
+      "passed": 1,
+      "scored": 1
+    },
+    "should-send": {
+      "passed": 1,
+      "scored": 1
+    },
+    "chat-format": {
+      "passed": 2,
+      "scored": 2
+    },
+    "email-format": {
+      "passed": 1,
+      "scored": 2
+    },
+    "asks-one-question": {
+      "passed": 0,
+      "scored": 1
+    }
+  },
+  "rules": {
+    "send_mail does not sign Elena.": 1,
+    "Sent an email instead of asking.": 1
+  },
+  "gatesFailed": [],
+  "cost": {
+    "agent": {
+      "input": 112459,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 2457,
+      "usd": 0.2495
+    },
+    "judge": {
+      "input": 0,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 0,
+      "usd": 0
+    },
+    "runs": 2,
+    "minutes": 0.57
+  }
+}
