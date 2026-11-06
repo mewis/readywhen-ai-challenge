@@ -1,0 +1,95 @@
+{
+  "at": "2026-11-06T16:01:36.878Z",
+  "commit": "e23e3d488a452667fb94b581744c206c49a0b250",
+  "dirty": true,
+  "promptHash": "25d3e78731464f840af77076f10e12e078b40acb8d4b51465553ecb64666a625",
+  "repeats": 1,
+  "judge": false,
+  "cases": [
+    {
+      "id": "hold-domenico",
+      "category": "unclear",
+      "scorers": {
+        "dont-send": {
+          "passed": 0,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "asks-one-question": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "Asked more than one question.": 1,
+        "Heading.": 1,
+        "send_mail does not open with Ciao or Hi.": 1,
+        "send_mail does not sign Elena.": 1,
+        "send_mail has a bullet list.": 1,
+        "send_mail is 15 sentences.": 1
+      }
+    }
+  ],
+  "scorers": {
+    "dont-send": {
+      "passed": 0,
+      "scored": 1
+    },
+    "not-sent": {
+      "passed": 0,
+      "scored": 1
+    },
+    "chat-format": {
+      "passed": 0,
+      "scored": 1
+    },
+    "email-format": {
+      "passed": 0,
+      "scored": 1
+    },
+    "asks-one-question": {
+      "passed": 0,
+      "scored": 1
+    }
+  },
+  "rules": {
+    "Asked more than one question.": 1,
+    "Heading.": 1,
+    "send_mail does not open with Ciao or Hi.": 1,
+    "send_mail does not sign Elena.": 1,
+    "send_mail has a bullet list.": 1,
+    "send_mail is 15 sentences.": 1
+  },
+  "gatesFailed": [
+    "hold-domenico"
+  ],
+  "cost": {
+    "agent": {
+      "input": 149101,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 3557,
+      "usd": 0.3338
+    },
+    "judge": {
+      "input": 0,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 0,
+      "usd": 0
+    },
+    "runs": 1,
+    "minutes": 0.64
+  }
+}

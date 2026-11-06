@@ -23,6 +23,21 @@ export function userText(input: { inputMessages?: MastraDBMessage[]; rememberedM
   return lines.join('\n\n')
 }
 
+const CLOSING_OFFER = /\b(?:would you like|shall i|do you want me to|want me to|let me know if|anything else)\b/i
+
+export function isClosingOffer(sentence: string): boolean {
+  return CLOSING_OFFER.test(sentence)
+}
+
+// Drop quoted lines and quoted text so a mark inside an email Elena received is not hers.
+export function withoutQuotes(text: string): string {
+  return text
+    .split('\n')
+    .filter(line => !/^\s*>/.test(line))
+    .join('\n')
+    .replace(/"[^"\n]*"|“[^”\n]*”/g, '')
+}
+
 export function sentences(text: string): string[] {
   const cleaned = text.replace(/\bE\./g, 'E')
   return cleaned

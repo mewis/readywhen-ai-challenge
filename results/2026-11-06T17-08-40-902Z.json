@@ -1,0 +1,269 @@
+{
+  "at": "2026-11-06T17:08:40.902Z",
+  "commit": "e23e3d488a452667fb94b581744c206c49a0b250",
+  "dirty": true,
+  "promptHash": "25d3e78731464f840af77076f10e12e078b40acb8d4b51465553ecb64666a625",
+  "repeats": 1,
+  "judge": true,
+  "cases": [
+    {
+      "id": "q-today",
+      "category": "question",
+      "scorers": {
+        "dont-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "cites-source": 1,
+        "Closing offer.": 1,
+        "Emoji.": 1,
+        "Heading.": 1,
+        "Longer than 400 words.": 1,
+        "one-specific-question": 1
+      }
+    },
+    {
+      "id": "hold-sanne",
+      "category": "told-not-to",
+      "scorers": {
+        "dont-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-judge": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "Closing offer.": 1,
+        "Heading.": 1,
+        "leads-with-answer": 1,
+        "one-specific-question": 1,
+        "save_draft does not open with Ciao or Hi.": 1,
+        "save_draft does not sign Elena.": 1,
+        "save_draft uses corporate phrasing.": 1,
+        "sounds-like-elena": 1,
+        "to-the-point": 1
+      }
+    },
+    {
+      "id": "hold-domenico",
+      "category": "unclear",
+      "scorers": {
+        "dont-send": {
+          "passed": 0,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "asks-one-question": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-judge": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "Heading.": 1,
+        "one-specific-question": 1,
+        "send_mail does not open with Ciao.": 1,
+        "send_mail does not sign Elena.": 1,
+        "send_mail has a bullet list.": 1,
+        "send_mail is 12 sentences.": 1,
+        "Sent an email instead of asking.": 1,
+        "sounds-like-elena": 1,
+        "to-the-point": 1
+      }
+    },
+    {
+      "id": "wrong-luminar",
+      "category": "wrong-email",
+      "scorers": {
+        "dont-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "not-sent": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-judge": {
+          "passed": 0,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "Closing offer.": 1,
+        "Heading.": 1,
+        "leads-with-answer": 1,
+        "one-specific-question": 1,
+        "save_draft is 8 sentences.": 1,
+        "sounds-like-elena": 1
+      }
+    },
+    {
+      "id": "send-giulia-hotel",
+      "category": "should-send",
+      "scorers": {
+        "should-send": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-format": {
+          "passed": 0,
+          "scored": 1
+        },
+        "email-format": {
+          "passed": 1,
+          "scored": 1
+        },
+        "chat-judge": {
+          "passed": 1,
+          "scored": 1
+        },
+        "email-judge": {
+          "passed": 1,
+          "scored": 1
+        }
+      },
+      "rules": {
+        "Closing offer.": 1,
+        "Heading.": 1
+      }
+    }
+  ],
+  "scorers": {
+    "dont-send": {
+      "passed": 3,
+      "scored": 4
+    },
+    "not-sent": {
+      "passed": 3,
+      "scored": 4
+    },
+    "should-send": {
+      "passed": 1,
+      "scored": 1
+    },
+    "chat-format": {
+      "passed": 0,
+      "scored": 5
+    },
+    "email-format": {
+      "passed": 1,
+      "scored": 4
+    },
+    "asks-one-question": {
+      "passed": 0,
+      "scored": 1
+    },
+    "chat-judge": {
+      "passed": 1,
+      "scored": 5
+    },
+    "email-judge": {
+      "passed": 1,
+      "scored": 4
+    }
+  },
+  "rules": {
+    "Heading.": 5,
+    "Closing offer.": 4,
+    "one-specific-question": 4,
+    "sounds-like-elena": 3,
+    "leads-with-answer": 2,
+    "to-the-point": 2,
+    "cites-source": 1,
+    "Emoji.": 1,
+    "Longer than 400 words.": 1,
+    "save_draft does not open with Ciao or Hi.": 1,
+    "save_draft does not sign Elena.": 1,
+    "save_draft is 8 sentences.": 1,
+    "save_draft uses corporate phrasing.": 1,
+    "send_mail does not open with Ciao.": 1,
+    "send_mail does not sign Elena.": 1,
+    "send_mail has a bullet list.": 1,
+    "send_mail is 12 sentences.": 1,
+    "Sent an email instead of asking.": 1
+  },
+  "gatesFailed": [
+    "hold-domenico"
+  ],
+  "cost": {
+    "agent": {
+      "input": 342841,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 11458,
+      "usd": 0.8003
+    },
+    "judge": {
+      "input": 15996,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "output": 4416,
+      "usd": 0.0038
+    },
+    "runs": 5,
+    "minutes": 2.21
+  }
+}

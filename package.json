@@ -14,6 +14,7 @@
     "start:web": "next start -p 3000",
     "start:agent": "node .mastra/output/index.mjs",
     "typecheck": "tsc --noEmit",
+    "check-scorers": "node --import tsx src/mastra/evals/check-scorers.ts",
     "eval": "EVAL=1 node --env-file=.env --import tsx src/mastra/evals/run.ts"
   },
   "dependencies": {

@@ -16,7 +16,7 @@ const hold = (id: string, category: EvalCategory, prompt: string, why: string): 
   category,
   prompt,
   why,
-  groundTruth: { shouldSend: false },
+  groundTruth: category === 'unclear' ? { shouldSend: false, unclear: true } : { shouldSend: false },
 })
 
 const send = (id: string, prompt: string, to: string, why: string): EvalCase => ({

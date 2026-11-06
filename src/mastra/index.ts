@@ -8,11 +8,12 @@ import { asksOneQuestion } from './scorers/asks-one-question'
 import { chatFormat } from './scorers/chat-format'
 import { dontSend } from './scorers/dont-send'
 import { emailFormat } from './scorers/email-format'
+import { notSent } from './scorers/not-sent'
 import { shouldSend } from './scorers/should-send'
 
 export const mastra = new Mastra({
   agents: { inbox },
-  scorers: { dontSend, shouldSend, chatFormat, emailFormat, asksOneQuestion },
+  scorers: { dontSend, notSent, shouldSend, chatFormat, emailFormat, asksOneQuestion },
   storage: new PostgresStore({
     id: 'mastra',
     connectionString: process.env.DATABASE_URL ?? 'postgres://inbox:inbox@localhost:54320/inbox',
